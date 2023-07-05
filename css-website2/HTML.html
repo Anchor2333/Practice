@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="web">
+        <div class="web-navbar">
+            <div class="web-navbar__cancel">
+                <a href="" class="web-navbar__cancel-btn">
+                    <i class="web-navbar__cancel-icon"></i>
+                    <p class="web-navbar__cancel-txt">Cancel</p>
+                </a>
+                <div class="web-navbar__divder"></div>
+            </div>
+            <div class="web-navbar__progress-bar">
+                <div class="web-navbar__progress-icon"></div>
+                <div class="web-navbar__progress-txt">
+                    <div class="web-navbar__new">
+                        <p class="navbar__new-txt">New Project</p>
+                    </div>
+                    <div class="web-navbar__upload">
+                        <p class="web-navbar__upload-txt">Upload Project</p>
+                    </div>
+                    <div class="web-navbar__edit">
+                        <p class="web-navbar__edit-txt">Edit Project</p>
+                    </div>
+                    <div class="web-navbar__confirm">
+                        <p class="web-navbar__confirm-txt">Confirm Project</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="web-main">
+            <div class="web-main__content">
+                <div class="web-main__time-file">
+                    <div class="web-main__deadline">
+                        <div id="web-main__deadline-container" class="web-main__deadline-container">
+                            <a id="web-main__deadline-icon" class="web-main__deadline-icon"></a>
+                            <input id="web-main__deadline-date" type="date" class="web-main__deadline-date">
+                        </div>
+                        <p class="web-main__deadline-txt"> Deadline</p>
+                    </div>
+                    <p class="web-main__file-total">File:12</p>
+                </div>
+                <div class="web-main__search-filter">
+                    <input type="checkbox" name="" id="" class="web-main__search-checkbox">
+                    <div class="web-main__search-bar">
+                        <a class="web-main__search-icon"></a>
+                        <input type="text" name="" id="" class="web-main__search-txt" placeholder=" Search">
+                    </div>
+                    <a class="web-main__filter-copy"></a>
+                    <a class="web-main__filter-paste"></a>
+                    <a class="web-main__filter-delete"></a>
+                    <a class="web-main__filter-file">+ Add Datasheet</a>
+                </div>
+                <div class="web-main__file">
+                    <input type="checkbox">
+                    <p class="web-main__file-txt">AFH035.pdf</p>
+                    <i class="web-main__file-icon"></i>
+                </div>
+                <div class="web-main__file">
+                    <input type="checkbox">
+                    <p class="web-main__file-txt">Tom and Jerry 0225.pdf</p>
+                    <i class="web-main__file-icon"></i>
+                </div>
+                <div class="web-main__file">
+                    <input type="checkbox">
+                    <p class="web-main__file-txt">Merged file (CANY-Yammy 001)</p>
+                    <i class="web-main__file-icon"></i>
+                </div>
+                <div class="web-main__file">
+                    <input type="checkbox">
+                    <p class="web-main__file-txt">GJ11-ADC.pdf</p>
+                    <i class="web-main__file-icon"></i>
+                </div>
+            </div>
+            <div class="web-main__drop">
+                <div class="web-main__drop-zone">
+                    <i class="web-main__drop-icon"></i>
+                    <p class="web-main__drop-title">Drag & Drop</p>
+                    <p class="web-main__drop-txt">PDF format is suggested.</p>
+                </div>
+            </div>
+        </div>
+        <div class="web-confirm">
+            <div class="web-confirm__previous">
+                <a href="" class="web-confirm__previous-btn">Previous</a>
+            </div>
+            <div class="web-confirm__next">
+                <a href="" class="web-confirm__next-btn">Next</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('web-main__deadline-container').addEventListener('click', function () {
+            document.getElementById('web-main__deadline-date').click();
+        });
+
+    </script>
+</body>
+
+</html>

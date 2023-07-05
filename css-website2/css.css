@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    font-family:sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.web {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* navbar */
+.web-navbar {
+    display: flex;
+    flex-direction: row;
+    margin:25px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: left;
+    gap: 100px;
+    
+}
+
+.web-navbar__cancel {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+}
+
+.web-navbar__cancel-btn {
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+}
+
+.web-navbar__cancel-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    box-sizing: border-box;;
+    background: url("./icon/folder-open-solid.svg") no-repeat ;
+
+}
+
+.web-navbar__cancel-txt {
+    color: #393939;
+
+}
+
+.web-navbar__divder {
+    display: block;
+    box-sizing: border-box;
+    height: 72px;
+    width: 50px;
+    border-left: solid 1px #6b6b6b;
+}
+
+.web-navbar__progress-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.web-navbar__progress-icon {
+    width: 1260px;
+    border-top: solid 18px #ababab;
+}
+
+.web-navbar__progress-txt {
+    display: flex;
+    font-size: 18px;
+    flex-direction: row;
+    width: 1380px;
+    justify-content: space-between;
+} 
+
+/* main */
+
+
+.web-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+/* main content left side ( date uploadfile checkfile ) */
+
+.web-main__content{ 
+    height: 560px;
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+}
+
+.web-main__time-file {
+    display: flex;
+    flex-direction: row;
+    width: 270px;
+    gap: 25px; 
+    align-items: center;
+}
+
+.web-main__deadline {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 290px;
+    height:45px;
+    border-bottom: solid 2px #6b6b6b;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+
+.web-main__deadline-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("./icon/calendar-days-solid.svg") no-repeat center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.web-main__deadline-date {
+    display: none;
+    border: none;
+}
+
+.web-main__deadline-txt {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 8px;
+    
+}
+
+.web-main__file-total {
+    font-size: 18px;
+    margin-top: 15px;
+    color: #393939;
+}
+
+.web-main__search-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.web-main__search-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("./icon/magnifying-glass-solid.svg") no-repeat center;
+    cursor: pointer;
+
+}
+
+.web-main__filter-copy {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("./icon/clone-regular.svg") no-repeat center;
+    cursor: pointer;
+}
+
+.web-main__filter-paste {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("./icon/clipboard-regular.svg") no-repeat center;
+    cursor: pointer;
+
+}
+
+.web-main__filter-delete {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("./icon/trash-can-solid.svg") no-repeat center;
+    cursor: pointer;
+
+}
+
+.web-main__search-filter {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.web-main__search-bar {
+    display: flex;
+    flex-direction: row;
+    width: 320px;
+    box-sizing: border-box;
+    padding: 10px;
+    gap: 15px;
+    border-bottom: solid 1px #6b6b6b;
+}
+
+
+
+.web-main__search-txt {
+    display: block;
+    border: none;
+    height: 30px;
+    width: 250px;
+    outline: none;
+    font-size: 18px;
+}
+
+.web-main__filter-file {
+    display: flex;
+    font-size: 22px;
+    width: 210px;
+    border: solid 3px orange;
+    border-radius: 10px;
+    text-align: center;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+}
+
+.web-main__file {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 770px;
+    height: 70px;
+    box-sizing: border-box;
+    padding: 30px;
+    justify-content: space-between;
+    border: solid 1px #6b6b6b;
+    border-radius: 10px;
+}
+
+.web-main__file-txt {
+    font-size: 22px;
+    width: 620px;
+
+}
+
+.web-main__file-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background: url("./icon/circle-solid.svg") no-repeat center;
+}
+
+/* main drop (drag and drop zone) */
+
+
+.web-main__drop-zone {
+    margin-top: 60px ;
+    width: 1000px;
+    height: 530px;
+    border: solid 2px #393939;
+    border-radius: 8px;
+    box-shadow:  0 0 5px 0 rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.web-main__drop-icon {
+    display: block;
+    width: 150px;
+    height: 150px;
+    background: url("./icon/arrow-up-from-bracket-solid.svg") no-repeat center;
+
+}
+
+.web-main__drop-title {
+    font-size: 62px;
+    font-weight: bolder;
+    color: #393939;
+}
+
+.web-main__drop-txt {
+    font-size: 26px;
+    font-weight: bolder;
+    color: #6b6b6b;
+}
+
+.web-confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.web-confirm__previous-btn {
+    font-size: 20px;
+    color: #29A3D6;
+    font-weight: bolder;
+}
+
+.web-confirm__previous {
+    display: flex;
+    border: solid 1px #393939;
+    border-radius: 40px;
+    height: 50px;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.web-confirm__next {
+    display: flex;
+    border: solid 1px #393939;
+    background-color: #29A3D6;
+    border-radius: 40px;
+    height: 50px;
+    width: 150px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
+
+.web-confirm__next-btn {
+    font-size: 20px;
+    color: aliceblue;
+    font-weight: bolder;
+
+}
