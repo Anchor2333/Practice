@@ -11,7 +11,7 @@
 
 <body>
     <div class="web">
-        <div class="web-navbar">
+        <header class="web-navbar">
             <div class="web-navbar__cancel">
                 <a href="" class="web-navbar__cancel-btn">
                     <i class="web-navbar__cancel-icon"></i>
@@ -36,9 +36,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="web-main">
-            <div class="web-main__content">
+        </header>
+        <main class="web-main">
+            <section class="web-main__content">
                 <div class="web-main__time-file">
                     <div class="web-main__deadline">
                         <div id="web-main__deadline-container" class="web-main__deadline-container">
@@ -80,29 +80,34 @@
                     <p class="web-main__file-txt">GJ11-ADC.pdf</p>
                     <i class="web-main__file-icon"></i>
                 </div>
-            </div>
-            <div class="web-main__drop">
+                <div class="web-main__file">
+                    <input type="checkbox">
+                    <p class="web-main__file-txt">GJ11-ADC.pdf</p>
+                    <i class="web-main__file-icon"></i>
+                </div>
+            </section>
+            <section class="web-main__drop">
                 <div class="web-main__drop-zone">
                     <i class="web-main__drop-icon"></i>
                     <p class="web-main__drop-title">Drag & Drop</p>
                     <p class="web-main__drop-txt">PDF format is suggested.</p>
                 </div>
-            </div>
-        </div>
-        <div class="web-confirm">
+            </section>
+        </main>
+        <footer class="web-confirm">
             <div class="web-confirm__previous">
                 <a href="" class="web-confirm__previous-btn">Previous</a>
             </div>
             <div class="web-confirm__next">
                 <a href="" class="web-confirm__next-btn">Next</a>
             </div>
-        </div>
+        </footer>
     </div>
     <script>
         document.getElementById('web-main__deadline-container').addEventListener('click', function () {
             document.getElementById('web-main__deadline-date').click();
         });
-
+        
     </script>
 </body>
 

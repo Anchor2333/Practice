@@ -193,6 +193,7 @@ a {
     flex-direction: row;
     gap: 20px;
     align-items: center;
+    
 }
 
 .web-main__search-bar {
@@ -220,15 +221,18 @@ a {
     display: flex;
     font-size: 22px;
     width: 210px;
-    border: solid 3px orange;
+    border: solid 3px #6b6b6b;
     border-radius: 10px;
     text-align: center;
     height: 45px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .web-main__file {
+    border: solid 0.1px #ababab;
+    box-shadow:  0 0 5px 0 rgba(0,0,0,0.3);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -238,7 +242,6 @@ a {
     box-sizing: border-box;
     padding: 30px;
     justify-content: space-between;
-    border: solid 1px #6b6b6b;
     border-radius: 10px;
 }
 
@@ -262,9 +265,9 @@ a {
     margin-top: 60px ;
     width: 1000px;
     height: 530px;
-    border: solid 2px #393939;
+    border: solid 0.1px #ababab;
     border-radius: 8px;
-    box-shadow:  0 0 5px 0 rgba(0,0,0,0.1);
+    box-shadow:  0 0 5px 0 rgba(0,0,0,0.3);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -275,20 +278,20 @@ a {
 
 .web-main__drop-icon {
     display: block;
-    width: 150px;
-    height: 150px;
+    width: 78px;
+    height: 70px;
     background: url("./icon/arrow-up-from-bracket-solid.svg") no-repeat center;
 
 }
 
 .web-main__drop-title {
-    font-size: 62px;
+    font-size: 32px;
     font-weight: bolder;
     color: #393939;
 }
 
 .web-main__drop-txt {
-    font-size: 26px;
+    font-size: 18px;
     font-weight: bolder;
     color: #6b6b6b;
 }
