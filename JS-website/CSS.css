@@ -1,0 +1,150 @@
+* {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+select {
+    font-size: 20px;
+    text-align: center;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    font-size: 19px;
+    gap: 20px;
+    color: #6b6b6b;
+    margin: 10px;
+}
+
+.search-bar__gender {
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar__gender-select {
+    width: 248px;
+    height: 50px;
+}
+
+.search-bar__location {
+    gap: 20px;
+    align-items: center;
+    display: flex;
+}
+
+.search-bar__location-option {
+    height: 50px;
+}
+
+.search-bar__location-select {
+    width: 246px;
+    height: 50px;
+}
+
+.search-bar__search {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.search-bar__search-text {
+    display: block;
+    flex-direction: row;
+    width: 195px;
+    height: 40px;
+    font-size: 18px;
+}
+
+.search-bar__search-btn {
+    align-items: center;
+    display: flex;
+    width: 126px;
+    height: 40px;
+    cursor: pointer;
+    border: solid 1px #aaa;
+    justify-content: center;
+}
+
+.search-bar__search:hover .search-bar__search-btn {
+    background-color: #6b6b6b;
+    color: azure;
+}
+
+.search-bar__clear {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar__clear :hover {
+    background-color: #6b6b6b;
+    color: azure;   
+}
+
+.search-bar__clear-btn {
+    display: flex;
+    width:126px ;
+    height: 40px;
+    align-items: center;
+    border: solid 1px #aaa;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 18px;
+    gap: 12px;
+}
+
+.main-member {
+    width: 1860px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: solid 1px #2288aa;
+    justify-content:left;
+    gap: 200px;
+    padding: 15px;
+    white-space: nowrap;
+    border-radius: 18px;
+    font-size: 18px;
+}
+
+.main-member ::before {
+    content: "";
+    width: 10px; 
+    height: 80px;
+    background-color: blue;
+}
+
+.main-member__name {
+    width: 55px;
+}
+
+.main-member__data {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 1500px;
+}
+
+.main-member__phone {
+    width: 125px;
+}
+
+.main-member__gender {
+    width: 65px;
+}
+
+.main-member__location {
+    width: 55px;
+}
