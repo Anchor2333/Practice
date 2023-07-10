@@ -5,6 +5,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
     let updateData;
     fetch('./public/data.json')
     .then(response => response.json())
@@ -13,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(updateData);  
         updateDisplay();
     })
-    .catch(error => console.error('Error', error))
+    .catch(error => console.error('Error', error));
     
-    const genderSelect = document.getElementById('search-bar__gender-select')
-    const locationSelect = document.getElementById('search-bar__location-select')
-    const textSearch = document.getElementById('search-bar__search-text')
-    const clearBtn = document.getElementById('search-bar__clear-btn')
+    const genderSelect = document.getElementById('search-bar__gender-select');
+    const locationSelect = document.getElementById('search-bar__location-select');
+    const textSearch = document.getElementById('search-bar__search-text');
+    const clearBtn = document.getElementById('search-bar__clear-btn');
 
     genderSelect.addEventListener('change', updateDisplay)
     locationSelect.addEventListener('change', updateDisplay)
@@ -28,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function clearSearch(e) {
         e.preventDefault();
         textSearch.value = '';
-        genderSelect.value =  '未填';
-        locationSelect.value = '未填';
+        genderSelect.value =  '';
+        locationSelect.value = '';
         updateDisplay()
     }
     
@@ -37,11 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const main = document.getElementById('main');
         main.innerHTML = '';
         
-        const selectedGender = genderSelect.value
-        const selectedLocation = locationSelect.value
-        const searchedText = textSearch.value
+        const selectedGender = genderSelect.value;
+        const selectedLocation = locationSelect.value;
+        const searchedText = textSearch.value;
 
-        let selectedData = updateData;
+        let dataDeepCopy = 'structuredClone' in window ? structuredClone(updateData) : JSON.parse(JSON.stringify(updateData));
     
         console.log(this);
         console.log(selectedGender);
@@ -49,19 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(searchedText);
     
         //邏輯判斷
-        if(searchedText !== '') {
-            selectedData = updateData.filter(user => user.Phone.includes(searchedText) || user.Name.includes(searchedText))
-        }
-        if(selectedGender !== '未填') {
-            selectedData = updateData.filter(user => user.Gender === selectedGender && (user.Phone.includes(searchedText) || user.Name.includes(searchedText)))
-        }
-        if(selectedLocation !== '未填') {
-            selectedData = updateData.filter(user => user.Location === selectedLocation && (user.Phone.includes(searchedText) || user.Name.includes(searchedText)))
-        }
-        if(selectedGender !== '未填' && selectedLocation !== '未填') {
-            selectedData = updateData.filter(user => user.Gender === selectedGender && user.Location === selectedLocation  && (user.Phone.includes(searchedText) || user.Name.includes(searchedText)))   
-        }
-        
+         let selectedData = dataDeepCopy.filter(user => {
+            let filterText = searchedText === '' ||
+            user.Phone.includes(searchedText) ||
+            user.Name.includes(searchedText);
+
+            let filterGender = selectedGender === '' ||
+            user.Gender === selectedGender;
+
+            let filterLocation = selectedLocation === '' ||
+            user.Location === selectedLocation;
+
+            return filterText && filterGender && filterLocation;
+        })
+
         selectedData.forEach(user => { 
             main.innerHTML += `
             <div class="main-member">    
@@ -73,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
             `
-        })  
+        });
 
         if(selectedData == '') {
             main.innerHTML += `

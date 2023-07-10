@@ -31,6 +31,7 @@ select {
 .search-bar__gender-select {
     width: 248px;
     height: 50px;
+    cursor: pointer;
 }
 
 .search-bar__location {
@@ -46,6 +47,7 @@ select {
 .search-bar__location-select {
     width: 246px;
     height: 50px;
+    cursor: pointer;
 }
 
 .search-bar__search {
@@ -120,6 +122,12 @@ select {
     position: relative;
 }
 
+.main-member:hover {
+    background-image: linear-gradient(70deg, rgb(118, 118, 241), rgb(180, 103, 235));
+    color: white;
+    cursor: pointer;
+}
+
 .main-member::before {
     content: '';
     position: absolute;
@@ -128,8 +136,12 @@ select {
     bottom: 0;
     width: 10px; 
     background-color: blue;  
+    border: solid 0px;
 }
 
+.main-member:hover::before {
+    background-color: white;  
+}
 
 .main-member ::before {
     content: "";
