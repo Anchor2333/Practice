@@ -26,7 +26,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: url("../css練習-2 icon/location.png") no-repeat;
+    background: url("./css練習-2 icon/location.png") no-repeat;
 }
 
 .home-navbar__logo-txt {
@@ -55,7 +55,7 @@
     width: 50px;
     height: 32px;
     cursor: pointer;
-    background: url("../css練習-2 icon/search.png") no-repeat center;
+    background: url("./css練習-2 icon/search.png") no-repeat center;
     background-color: #aaa;
 }
 
@@ -71,7 +71,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: url("../css練習-2 icon/mail.png") no-repeat center;
+    background: url("./css練習-2 icon/mail.png") no-repeat center;
 }
 
 .home-navbar__member-car {
@@ -79,7 +79,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: url("../css練習-2 icon/placeholder.png") no-repeat center;
+    background: url("./css練習-2 icon/placeholder.png") no-repeat center;
 }
 
 .home-navbar__member-oil {
@@ -87,7 +87,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: url("../css練習-2 icon/gas-station.png") no-repeat center;
+    background: url("./css練習-2 icon/gas-station.png") no-repeat center;
 }
 
 .home-navbar__member-loging {
@@ -95,7 +95,7 @@
     width: 32px;
     height: 32px;
     cursor: pointer;
-    background: url("../css練習-2 icon/radar.png") no-repeat center;
+    background: url("./css練習-2 icon/radar.png") no-repeat center;
 }
 
 /* home main */
@@ -133,7 +133,7 @@
 }
 
 .home-main__home-icon {
-    background: url("../css練習-2 icon/home-run.png") no-repeat;
+    background: url("./css練習-2 icon/home-run.png") no-repeat;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -154,7 +154,7 @@
 }
 
 .home-main__popular-icon {
-    background: url("../css練習-2 icon/fire.png") no-repeat;
+    background: url("./css練習-2 icon/fire.png") no-repeat;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -176,7 +176,7 @@
 }
 
 .home-main__subscript-icon {
-    background: url("../css練習-2 icon/subscribe.png") no-repeat;
+    background: url("./css練習-2 icon/subscribe.png") no-repeat;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -199,7 +199,7 @@
 }
 
 .home-main__originals-icon {
-    background: url("../css練習-2 icon/trademark.png") no-repeat center;
+    background: url("./css練習-2 icon/trademark.png") no-repeat center;
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -349,10 +349,6 @@
     overflow: hidden;
 }
 
-.home-main__update-user {
-
-}
-
 .home-main__update-context {
     display: flex;
     flex-direction: row;
@@ -407,7 +403,7 @@
     cursor: pointer;
     width: 24px;
     height: 24px;
-    background: url("../css練習-2\ icon/like.png") no-repeat center;
+    background: url("./css練習-2\ icon/like.png") no-repeat center;
 }
 
 .home-main__unlike-pic{
@@ -415,7 +411,7 @@
     cursor: pointer;
     width: 24px;
     height: 24px;
-    background: url("../css練習-2\ icon/unlike.png") no-repeat center;
+    background: url("./css練習-2\ icon/unlike.png") no-repeat center;
 }
 
 .home-main__unlike-btn {
@@ -423,16 +419,12 @@
     align-items: center;   
 }
 
-.home-main__comment-btn {
-
-}
-
 .home-main__comment-pic {
     display: block;
     cursor: pointer;
     width: 24px;
     height: 24px;
-    background: url("../css練習-2\ icon/comment.png") no-repeat center;
+    background: url("./css練習-2\ icon/comment.png") no-repeat center;
 }
 
 /* home-main__covid*/
