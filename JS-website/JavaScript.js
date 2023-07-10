@@ -74,5 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             `
         })  
+
+        if(selectedData == '') {
+            main.innerHTML += `
+            <div class="main-member__none">
+            <p class="main-member__none-text">查無此筆資料...</p>
+            </div>
+            `
+        }
     }
 })

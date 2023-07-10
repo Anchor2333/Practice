@@ -160,3 +160,13 @@ select {
 .main-member__location {
     width: 55px;
 }
+
+.main-member__none {
+    display: flex;
+    justify-content: center;
+}
+
+.main-member__none-text {
+    font-size: 22px;
+    color: #6b6b6b;
+}
