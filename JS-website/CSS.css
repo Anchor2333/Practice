@@ -114,19 +114,31 @@ select {
     gap: 200px;
     padding: 15px;
     white-space: nowrap;
-    border-radius: 18px;
+    border-radius: 10px;
     font-size: 18px;
+    overflow: hidden;
+    position: relative;
 }
+
+.main-member::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 10px; 
+    background-color: blue;  
+}
+
 
 .main-member ::before {
     content: "";
-    width: 10px; 
-    height: 80px;
-    background-color: blue;
+    
 }
 
 .main-member__name {
     width: 55px;
+    margin-left: 30px;
 }
 
 .main-member__data {
@@ -134,7 +146,7 @@ select {
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    width: 1500px;
+    width: 1200px;
 }
 
 .main-member__phone {

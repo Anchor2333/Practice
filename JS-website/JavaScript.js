@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         textSearch.value = '';
         genderSelect.value =  '未填';
         locationSelect.value = '未填';
-        updateDisplay();
+        updateDisplay()
     }
     
     function updateDisplay() {
