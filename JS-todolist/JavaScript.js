@@ -40,3 +40,8 @@ function newTodo() {
 
 document.querySelector("#todo__add-btutton").addEventListener("click", newTodo);
 
+function scrollEvent() {
+    console.log('牛肉')
+};
+
+document.querySelector('#todo__list').addEventListener('scroll', scrollEvent);
