@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(135deg, #FED2B6, #F9BF9F, #F6AE84);
+}
+
+.todo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    background: #FFF;
+    box-shadow: 8px 5px 35px 10px rgba(192, 145, 102, 0.50);
+    width: 475px;
+    height: 710px;
+}
+
+.todo__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 475px;
+    gap: 15px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.todo__title-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #7887E5;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.todo__title-sub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #928CDD;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.todo__list {
+    list-style-type: none;
+    height: 460px;
+}
+
+.todo__input {
+    width: 260px;
+}
+
+.todo__footer {
+    display: flex;
+    width: 420px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.todo__tasks-total {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #928CDD;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: default;
+}
+
+.todo__button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    height: 25px;
+    border-radius: 8px;
+    width: 120px;
+}
+
+.todo__button-txt {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #928CDD;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.todo__button-icon {
+    display: block;
+    background:url('./public/plus-solid.svg') no-repeat center;
+    width: 15px;
+    height: 15px;
+}
+
+.todo__button:active, .todo__button:hover {
+    background-color: #928CDD;
+}
+
+.todo__button:active .todo__button-txt,
+.todo__button:hover .todo__button-txt {
+    color: #fff;
+}
+
+.todo__button:active .todo__button-icon, 
+.todo__button:hover .todo__button-icon {
+    background:url('./public/plus-solid-white.svg') no-repeat center;
+}
+
+.todo__list-item {
+    margin: 5px 0;
+}
+
+.todo__list-item--close {}
