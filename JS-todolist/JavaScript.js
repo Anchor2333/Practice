@@ -1,31 +1,35 @@
+const todoList = document.querySelector('#todo__list');
+const todoForm = document.querySelector('#todo__list-form');
+const scrollIcon = document.querySelector('#todo__scroll-icon');
+
 function newTodo() {
-    var li = document.createElement("li");
-    li.className = "todo__list-item";
-    var inputValue = document.querySelector(".todo__input").value;
-    var t = document.createTextNode(inputValue);
-    li.appendChild(t);
-
-    if (inputValue === '') {
-        alert("You must write something!");
-    } else {
-        document.querySelector(".todo__list").appendChild(li);
+    let hours = new Date().getHours();
+    let minutes = new Date().getMinutes();
+    
+    if (hours < 10) {
+        hours = '0' + hours;
     }
-    document.querySelector(".todo__input").value = "";
-
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "todo__list-item--close";
-    span.appendChild(txt);
-    li.appendChild(span);
-
-    var close = document.getElementsByClassName("todo__list-item--close");
-    var i;
-    for (i = 0; i < close.length; i++) {
-        close[i].onclick = function() {
-            var div = this.parentElement;
-            div.style.display = "none";
-        }
+    
+    if (minutes < 10) {
+        minutes = '0' + minutes;
+    }
+    
+    let timeString = hours + ':' + minutes;
+    let inputString = document.querySelector('#todo__input-text'); 
+    console.log('極度乾燥');
+    console.log(todoForm);
+    todoForm.innerHTML += `
+    <li class="todo__list-item">
+    <input type="checkbox" class="todo__list-check" name="" id=""> 
+    <span class="todo__list-text">${inputString.value}</span>
+    <span class="todo__list-time">${timeString}</span>
+    </li>
+    `
+    inputString.value = '';
+    if (todoList.scrollHeight > todoList.clientHeight) {
+        scrollIcon.style.display =  'block';
     }
 }
 
-document.querySelector(".todo__button").addEventListener("click", newTodo);
+document.querySelector("#todo__add-btutton").addEventListener("click", newTodo);
+

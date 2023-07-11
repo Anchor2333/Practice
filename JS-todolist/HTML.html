@@ -14,17 +14,49 @@
         <div class="todo">
             <div class="todo__title">
                 <h1 class="todo__title-main">Todo List</h1>
-                <!-- <h2 class="todo__title-sub">Thuesday 07/11 23</h2> -->
+                <h2 class="todo__title-sub"></h2>
             </div>
-            <input class="todo__input" type="text" placeholder="New todo">
-            <ul class="todo__list"></ul>
+            <div class="todo__input">
+                <input class="todo__input-text" type="text" placeholder="New todo" id="todo__input-text">
+                <a id="todo__add-btutton" class="todo__add-btutton">
+                    <div class="todo__add-txt">NEW</div>
+                    <i class="todo__add-icon"></i>
+                </a>
+            </div>
+            <div id="todo__list" class="todo__list">
+                <ul id="todo__list-form" class="todo__list-form">
+                    <li class="todo__list-item">
+                        <input type="checkbox" class="todo__list-check" name="" id=""> 
+                        <span class="todo__list-text">Marging text 15px Gan li lad uer</span>
+                        <span class="todo__list-time">10:15</span>
+                    </li>
+                    <li class="todo__list-item">
+                        <input type="checkbox" class="todo__list-check" name="" id="">
+                        <span class="todo__list-text">Rolling in the deep nothing lose</span>
+                        <span class="todo__list-time">10:15</span>
+                    </li>
+                    <li class="todo__list-item">
+                        <input type="checkbox" class="todo__list-check" name="" id="">
+                        <span class="todo__list-text">Gerorge next move to</span>
+                        <span class="todo__list-time">10:15</span>
+                    </li>
+                    <li class="todo__list-item">
+                        <input type="checkbox" class="todo__list-check" name="" id="">
+                        <span class="todo__list-text">Help me Im stucked 1312 nice cnie13212313212132132121321</span>
+                        <span class="todo__list-time">10:15</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="todo__scroll">
+                <i id="todo__scroll-icon" class="todo__scroll-icon"></i>
+            </div>
             <div class="todo__footer">
                 <div class="todo__tasks-total">
                     <p id="todo__tasks-total-number" class="todo__tasks-total-number">5</p>
                     <p class="todo__tasks-total-txt">TASKS</p>
                 </div>
                 <a class="todo__button">
-                    <div class="todo__button-txt">ADD NEW</div>
+                    <div class="todo__button-txt">NEW PAGE</div>
                     <i class="todo__button-icon"></i>
                 </a>
             </div>

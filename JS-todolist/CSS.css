@@ -7,6 +7,11 @@ input {
     outline: none;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 .main {
     display: flex;
     flex-direction: column;
@@ -26,6 +31,7 @@ input {
     box-shadow: 8px 5px 35px 10px rgba(192, 145, 102, 0.50);
     width: 475px;
     height: 710px;
+    position: relative;
 }
 
 .todo__title {
@@ -35,7 +41,7 @@ input {
     width: 475px;
     gap: 15px;
     margin-top: 45px;
-    margin-bottom: 45px;
+    margin-bottom: 25px;
 }
 
 .todo__title-main {
@@ -46,9 +52,6 @@ input {
     color: #7887E5;
     text-align: center;
     font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
 }
 
 .todo__title-sub {
@@ -59,20 +62,124 @@ input {
     color: #928CDD;
     text-align: center;
     font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-
-.todo__list {
-    list-style-type: none;
-    height: 460px;
 }
 
 .todo__input {
-    width: 260px;
+    display: flex;
+    width: 330px;
+    height: 40px;
+    border: solid 0.1px #606ab9 ;
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    align-items: center;
+    justify-content: space-between;
 }
 
+.todo__input-text {
+    width: 260px;
+    color: #606692;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: 0;
+}
+
+.todo__add-btutton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    height: 25px;
+    border-radius: 8px;
+}
+
+.todo__add-txt {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #928CDD;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.todo__add-icon {
+    display: block;
+    background: url('./public/plus-solid.svg') no-repeat center;
+    width: 15px;
+    height: 15px;
+}
+
+.todo__list {
+    height: 460px;
+    width: 475px;
+    justify-content: left;
+    overflow: scroll;
+}
+
+.todo__list::-webkit-scrollbar {
+    display: none;
+}
+
+.todo__list-form {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    gap: 30px;
+}
+
+.todo__list-item {
+    display: flex;
+    margin-left: 45px;
+    flex-direction: row;
+    gap: 30px;
+    color: #989BE9;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    height: 35px;
+}
+
+.todo__list-check {
+    display: block;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    align-items: center;
+}
+
+.todo__list-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    max-width: 280px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.todo__list-time {
+    color: #C3C5FD;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    position: absolute;
+    right: 32px;
+}
+
+.todo__scroll {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    right: 48%;
+    bottom: 5%;
+}
+
+.todo__scroll-icon {
+    background: url('./public/caret-down-solid.svg') no-repeat center;
+    width: 30px;
+    height: 30px;
+    display: none;
+}
 .todo__footer {
     display: flex;
     width: 420px;
@@ -88,9 +195,6 @@ input {
     color: #928CDD;
     text-align: center;
     font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
     cursor: default;
 }
 
@@ -111,19 +215,18 @@ input {
     color: #928CDD;
     text-align: center;
     font-size: 15px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+
 }
 
 .todo__button-icon {
     display: block;
-    background:url('./public/plus-solid.svg') no-repeat center;
+    background: url('./public/plus-solid.svg') no-repeat center;
     width: 15px;
     height: 15px;
 }
 
-.todo__button:active, .todo__button:hover {
+.todo__button:active,
+.todo__button:hover {
     background-color: #928CDD;
 }
 
@@ -132,13 +235,7 @@ input {
     color: #fff;
 }
 
-.todo__button:active .todo__button-icon, 
+.todo__button:active .todo__button-icon,
 .todo__button:hover .todo__button-icon {
-    background:url('./public/plus-solid-white.svg') no-repeat center;
+    background: url('./public/plus-solid-white.svg') no-repeat center;
 }
-
-.todo__list-item {
-    margin: 5px 0;
-}
-
-.todo__list-item--close {}
