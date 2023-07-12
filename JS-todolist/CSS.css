@@ -51,7 +51,7 @@ ul {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #7887E5;
     text-align: center;
-    font-size: 24px;
+    font-size: 26px;
 }
 
 .todo__title-sub {
@@ -84,7 +84,7 @@ ul {
     font-weight: 0;
 }
 
-.todo__add-btutton {
+.todo__add-button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -167,18 +167,26 @@ ul {
 
 .todo__scroll {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    bottom: 0;
-    right: 48%;
-    bottom: 5%;
+    left: 80px;
+    bottom: 9%;
+}
+
+.todo__bottom-icon {
+    position: absolute;
+    width: 350px;
+    height: 0px;
+    background:linear-gradient(90deg, #FFF, #d0d1fa, #d0d1fa, #c0c1fd, #d0d1fa, #d0d1fa, #FFF) ;
+    display: block;
 }
 
 .todo__scroll-icon {
+    position: absolute;
     background: url('./public/caret-down-solid.svg') no-repeat center;
     width: 30px;
     height: 30px;
     display: none;
+    right: -150px;
+    top: -10px;
 }
 .todo__footer {
     display: flex;
@@ -196,6 +204,8 @@ ul {
     text-align: center;
     font-size: 15px;
     cursor: default;
+    font-weight: 700;
+    align-items: center;
 }
 
 .todo__button {
@@ -208,6 +218,7 @@ ul {
     height: 25px;
     border-radius: 8px;
     width: 120px;
+    font-weight: 700;
 }
 
 .todo__button-txt {
