@@ -169,6 +169,7 @@ ul {
 }
 
 .todo__list-delete {
+    display: block;
     color: #C3C5FD;
     font-size: 16px;
     position: absolute;
