@@ -64,7 +64,7 @@ function newTodo() {
     };
 
     totalTasks.textContent = `${totalItemsUpdate.length + 1}`;
-    updateLocalstorage();
+    storeLocalstorage();
 }
 
 //delete todolist funciton & local strage
@@ -99,7 +99,7 @@ function listEventHandler(p) {
             deleteTodo(p.target.parentNode.id);
             break;
         case p.target.className === 'todo__list-check':
-            updateLocalstorage();
+            storeLocalstorage();
             break;
         case p.target.className === 'todo__list-text':
             console.log(1);
@@ -108,7 +108,7 @@ function listEventHandler(p) {
             break;
     }
     updateDisplay();
-    updateLocalstorage();
+    storeLocalstorage();
 }
 
 //time update
@@ -128,7 +128,7 @@ function timeUpdate() {
 }
 
 //local storage update
-function updateLocalstorage() {
+function storeLocalstorage() {
     const todoList = Array.from(document.querySelectorAll('.todo__list-item')).map(todo => {
         return {
             'id': todo.id,
