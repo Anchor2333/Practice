@@ -4,7 +4,6 @@ const scrollIcon = document.querySelector('#todo__scroll-icon');
 const totalTasks = document.querySelector('#todo__tasks-total-number');
 let localTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
-/*
 //fetch todos API
 async function fetchData() {
     try {
@@ -19,41 +18,35 @@ async function fetchData() {
     }
 }
 
-async function fetchStorage() {
+//render todolist
+async function renderTodoList() {
     const data = await fetchData();
     const dataDeepCopy = JSON.parse(JSON.stringify(data));
-    console.log(dataDeepCopy);
-    const filterData =  dataDeepCopy.todos.filter(data => data.todo !== localTodos.todo);
-    localTodos.concat(filterData);
+    if (!!localTodos[0] == '') {
+        let filterData =  dataDeepCopy.todos;
+        console.log(localTodos);
+        console.log(filterData);
+        localTodos = localTodos.concat(filterData);
+    } else {
+        localTodos = JSON.parse(localStorage.getItem('todos')) ;
+    }
+    localStorage.setItem('todos', JSON.stringify(localTodos));
+    upadteDisplay() 
+    document.querySelector('#todo__list-form').addEventListener('click', function(p) {
+        if (p.target.className === 'todo__list-delete') {
+            deleteTodo(p.target.parentNode.id);
+        }
+    })
+    let totalItemsUpdate = document.querySelectorAll('.todo__list-item');
+    totalTasks.textContent = `${totalItemsUpdate.length}`;
+    updateLocalstorage();
 }
-*/
-
-//render todolist
-function renderTodoList() {
-    localTodos.forEach(todoItem => {
-        todoForm.innerHTML += `
-        <li class="todo__list-item" id="${todoItem.id}">
-        <input type="checkbox" class="todo__list-check" name="" id="" ${todoItem.completed ? 'checked' : "" }> 
-        <span class="todo__list-text">${todoItem.todo}</span>
-        <span class="todo__list-time">${timeUpdate()}</span>
-        <a class="todo__list-delete">X</a>
-        </li>
-        `
-        document.querySelector(".todo__list-delete").addEventListener("click", deleteTodo);
-    });
-    const totalItems = document.querySelectorAll('.todo__list-item');
-    totalTasks.textContent = `${totalItems.length}`;
-}
-document.addEventListener('DOMContentLoaded', function() {
-    // fetchStorage();
-    renderTodoList();    
-});
+document.addEventListener('DOMContentLoaded', renderTodoList);
 
 //add new todo 
 function newTodo() {
     let totalItemsUpdate = document.querySelectorAll('.todo__list-item');
     let inputString = document.querySelector('#todo__input-text');
-    const totalItems = document.querySelectorAll('.todo__list-item');
 
     if (inputString.value !== '') {
         todoForm.innerHTML += `
@@ -70,20 +63,37 @@ function newTodo() {
     if (todoList.scrollHeight > todoList.clientHeight) {
         scrollIcon.style.display = 'block';
     };
+
     totalTasks.textContent = `${totalItemsUpdate.length + 1}`;
     updateLocalstorage();
 }
 document.querySelector("#todo__add-button").addEventListener("click", newTodo);
 
 //delete todolist funciton & local strage
-function deleteTodo() {
-    console.log('123');
-    /*
-    localStorage.removeItem(target.id)
+function deleteTodo(todoId) {
+    localTodos = JSON.parse(localStorage.getItem('todos'));
+    let deleteList = localTodos.filter(item => item.id !== todoId);
+    console.log(deleteList);
+    localStorage.setItem('todos', JSON.stringify(deleteList));
     let totalItemsUpdate = document.querySelectorAll('.todo__list-item');
-    totalTasks.textContent = `${totalItemsUpdate.length}`;
-    */
-   renderTodoList();
+    totalTasks.textContent = `${ totalItemsUpdate.length - 1 }`;
+    upadteDisplay();
+}
+
+//update display
+function upadteDisplay() {
+    todoForm.innerHTML = '';
+    localTodos = JSON.parse(localStorage.getItem('todos'));
+    localTodos.forEach(todoItem => {
+        todoForm.innerHTML += `
+        <li class="todo__list-item" id="${ todoItem.id }">
+        <input type="checkbox" class="todo__list-check" name="" id="" ${ todoItem.completed ? 'checked' : "" }> 
+        <span class="todo__list-text">${todoItem.todo}</span>
+        <span class="todo__list-time">${ todoItem.time ? todoItem.time : timeUpdate() }</span>
+        <a class="todo__list-delete">X</a>
+        </li>
+        `
+    });
 }
 
 //time update
@@ -104,15 +114,15 @@ function timeUpdate() {
 
 //local storage upadte
 function updateLocalstorage() {
-    const todos = Array.from(document.querySelectorAll('.todo__list-item')).map(todo =>{
-        return {
-            'id' : todo.id,
-            'todo' : todo.querySelector('.todo__list-text').innerText,
-            'completed' : todo.querySelector('.todo__list-check').checked,
-            'time' : todo.querySelector('.todo__list-time').innerText
-        };
+    const todoList = Array.from(document.querySelectorAll('.todo__list-item')).map(todo =>{
+                return {
+                    'id' : todo.id,
+                    'todo' : todo.querySelector('.todo__list-text').innerText,
+                    'completed' : todo.querySelector('.todo__list-check').checked,
+                    'time' : todo.querySelector('.todo__list-time').innerText
+                };
     });
-    localStorage.setItem('todos', JSON.stringify(todos));
+    localStorage.setItem('todos', JSON.stringify(todoList));
 }
 
 //scroll icon update
@@ -127,3 +137,5 @@ function scrollEvent() {
     }
 };
 document.querySelector('#todo__list').addEventListener('scroll', scrollEvent);
+
+//
