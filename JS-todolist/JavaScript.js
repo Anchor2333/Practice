@@ -36,10 +36,10 @@ async function renderTodoList() {
         if (p.target.className === 'todo__list-delete') {
             deleteTodo(p.target.parentNode.id);
         }
+        updateLocalstorage();
     })
     let totalItemsUpdate = document.querySelectorAll('.todo__list-item');
     totalTasks.textContent = `${totalItemsUpdate.length}`;
-    updateLocalstorage();
 }
 document.addEventListener('DOMContentLoaded', renderTodoList);
 
@@ -77,7 +77,6 @@ function deleteTodo(todoId) {
     localStorage.setItem('todos', JSON.stringify(deleteList));
     let totalItemsUpdate = document.querySelectorAll('.todo__list-item');
     totalTasks.textContent = `${ totalItemsUpdate.length - 1 }`;
-    upadteDisplay();
 }
 
 //update display
@@ -137,5 +136,3 @@ function scrollEvent() {
     }
 };
 document.querySelector('#todo__list').addEventListener('scroll', scrollEvent);
-
-//
