@@ -161,6 +161,21 @@ ul {
     text-overflow: ellipsis;
 }
 
+.todo__list-input {
+    display: none;
+    left: 20%;
+    font-size: 20px;
+    font-weight: 700;
+    color: #606ab9;
+    background-color:#FFF ;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    max-width: 280px;
+    max-height: 20px;
+    min-height: 20px;
+}
+
 .todo__list-time {
     color: #C3C5FD;
     font-size: 16px;

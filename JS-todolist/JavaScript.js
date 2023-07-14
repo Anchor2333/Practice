@@ -17,7 +17,7 @@ async function fetchData() {
 
         return data;
     } catch (error) {
-        console.log('Fail to fetch todo list:', error);
+        console.error('Fail to fetch todo list:', error);
     }
 }
 
@@ -80,6 +80,7 @@ function updateDisplay() {
         todoForm.innerHTML += `
         <li class="todo__list-item" id="${todoItem.id}">
         <input type="checkbox" class="todo__list-check" name="" id="" ${todoItem.completed ? 'checked' : ""}> 
+        <input type="text" class="todo__list-input" name="" id=""> 
         <span class="todo__list-text">${todoItem.todo}</span>
         <span class="todo__list-time">${todoItem.time ? todoItem.time : timeUpdate()}</span>
         <a class="todo__list-delete">X</a>
@@ -105,13 +106,28 @@ function listEventHandler(p) {
             checkTodo(p.target);
 
             break;
-        case 'todo__list-text':
-            // console.log(1);
+        default:
 
             break;
-        default:
-            break;
         }
+}
+
+//
+function listEditor(p) {
+    const targetClass = p.target.className;
+
+    switch (targetClass) {
+        case 'todo__list-text':
+            console.log(targetClass);
+            console.log(p.target.innerText);
+            console.log(p.target.parentNode.querySelector('.todo__list-input'));
+            p.target.parentNode.querySelector('.todo__list-input').style.display = 'block';
+            
+            break;
+        default:
+
+            break;
+    }
 }
 
 //time update
@@ -136,12 +152,7 @@ function checkTodo(p) {
     const chekItem = p.parentNode.id
     localTodos.forEach(item => {
         if( `${item.id}` === `${chekItem}` ){
-            console.log(1, p.checked);
-            console.log(3, item.completed);
             item.completed = p.checked ;
-            console.log(2, p.checked);
-            console.log(4, item.completed);
-            
         }
     });
     localStorage.setItem('todos', JSON.stringify(localTodos))
@@ -171,4 +182,5 @@ function scrollIconDisplay() {
 document.addEventListener('DOMContentLoaded', renderTodoList);
 document.querySelector("#todo__add-button").addEventListener("click", newTodo);
 document.querySelector('#todo__list').addEventListener('scroll', scrollIconDisplay);
-document.querySelector('#todo__list-form').addEventListener('click', listEventHandler)
+document.querySelector('#todo__list-form').addEventListener('click', listEventHandler);
+document.querySelector('#todo__list-form').addEventListener('dblclick', listEditor);
