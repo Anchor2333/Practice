@@ -1,6 +1,7 @@
 const todoList = document.querySelector('#todo__list');
 const todoForm = document.querySelector('#todo__list-form');
 const scrollIcon = document.querySelector('#todo__scroll-icon');
+const scrollIconBottom = document.querySelector('#todo__bottom-icon');
 const totalTasks = document.querySelector('#todo__tasks-total-number');
 let localTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
@@ -28,10 +29,11 @@ async function todoListAPI() {
 
     if (localTodos.length === 0) {
         let filterData = dataDeepCopy.todos;
+        filterData.map(item => item.id += Date.now().toString()) 
         localTodos = localTodos.concat(filterData);
     } else {
         localTodos = JSON.parse(localStorage.getItem('todos'));
-    }    
+    }
     localStorage.setItem('todos', JSON.stringify(localTodos));
 }
 
@@ -52,10 +54,10 @@ function newTodo() {
 
     if (inputString.value !== '') {
         const newTodo = [{
-            'id' : `${(Date.now().toString())}`,
-            'completed' : false,
-            'todo' : `${inputString.value}`,
-            'time' : `${timeUpdate()}`,
+            'id': `${(Date.now().toString())}`,
+            'completed': false,
+            'todo': `${inputString.value}`,
+            'time': `${timeUpdate()}`,
         }]
         localTodos = localTodos.concat(newTodo);
         localStorage.setItem('todos', JSON.stringify(localTodos));
@@ -66,7 +68,8 @@ function newTodo() {
 
 //delete todolist funciton & local strage
 function deleteTodo(todoId) {
-    localTodos = localTodos.filter(item => item.id !== todoId);
+    localTodos = JSON.parse(localStorage.getItem('todos'))
+    localTodos = localTodos.filter(item => `${item.id}` !== `${todoId}`);
     localStorage.setItem('todos', JSON.stringify(localTodos));
 }
 
@@ -76,7 +79,7 @@ function updateDisplay() {
     localTodos = JSON.parse(localStorage.getItem('todos'));
     localTodos.forEach(todoItem => {
         todoForm.innerHTML += `
-        <li class="todo__list-item" id="${todoItem.id.length < 13 ? (Date().toString()) : todoItem.id }">
+        <li class="todo__list-item" id="${todoItem.id}">
         <input type="checkbox" class="todo__list-check" name="" id="" ${todoItem.completed ? 'checked' : ""}> 
         <span class="todo__list-text">${todoItem.todo}</span>
         <span class="todo__list-time">${todoItem.time ? todoItem.time : timeUpdate()}</span>
@@ -94,6 +97,7 @@ function listEventHandler(p) {
     switch (targetClass) {
         case 'todo__list-delete':
             deleteTodo(p.target.parentNode.id);
+            updateDisplay();
             break;
         case 'todo__list-check':
             storeLocalstorage();
@@ -103,8 +107,7 @@ function listEventHandler(p) {
             break;
         default:
             break;
-    }
-    updateDisplay();
+        }
 }
 
 //time update
@@ -139,25 +142,23 @@ function storeLocalstorage() {
 //scroll icon update
 function scrollIconDisplay() {
     const { scrollTop, scrollHeight, clientHeight } = document.querySelector('#todo__list');
-    let scrollIconBottom = document.querySelector('#todo__bottom-icon');
     scrollIconBottom.style.height = '0px'
     scrollIcon.style.display = 'none';
-    
-    if (scrollHeight > 460 ) {
 
-        if (clientHeight + scrollTop >= scrollHeight -5) {
+    if (scrollHeight > clientHeight) {
+
+        //is client scroll to bottom ? display bottom line : display icon 
+        if (clientHeight + scrollTop >= scrollHeight - 5) {
             scrollIconBottom.style.height = '3px';
             scrollIcon.style.display = 'none';
-        } 
-
-        if (clientHeight + scrollTop < scrollHeight - 5) {
+        } else {
             scrollIconBottom.style.height = '0px';
             scrollIcon.style.display = 'block';
         }
-    } 
-    
+    }
+
 }
-    
+
 document.addEventListener('DOMContentLoaded', renderTodoList);
 document.querySelector("#todo__add-button").addEventListener("click", newTodo);
 document.querySelector('#todo__list').addEventListener('scroll', scrollIconDisplay);
