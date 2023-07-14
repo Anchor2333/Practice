@@ -21,59 +21,53 @@ async function fetchData() {
     }
 }
 
-//render todolist
-async function renderTodoList() {
+//is local storage empty ? fetch api : loading todoList
+async function todoListAPI() {
     const data = await fetchData();
     const dataDeepCopy = JSON.parse(JSON.stringify(data));
 
-    if (!!localTodos[0] == '') {
+    if (localTodos.length === 0) {
         let filterData = dataDeepCopy.todos;
-        console.log(localTodos);
-        console.log(filterData);
         localTodos = localTodos.concat(filterData);
     } else {
         localTodos = JSON.parse(localStorage.getItem('todos'));
-    }
-
+    }    
     localStorage.setItem('todos', JSON.stringify(localTodos));
-    updateDisplay()
+}
 
-    let totalItemsUpdate = document.querySelectorAll('.todo__list-item');
-    totalTasks.textContent = `${totalItemsUpdate.length}`;
+//total tasks
+function totalItemsUpdate() {
+    totalTasks.textContent = `${localTodos.length}`;
+}
+
+//render todolist
+async function renderTodoList() {
+    await todoListAPI();
+    updateDisplay();
 }
 
 //add new todo 
 function newTodo() {
-    let totalItemsUpdate = document.querySelectorAll('.todo__list-item');
-    let inputString = document.querySelector('#todo__input-text');
+    const inputString = document.querySelector('#todo__input-text');
 
     if (inputString.value !== '') {
-        todoForm.innerHTML += `
-        <li class="todo__list-item" id="${Date.now().toString()}">
-        <input type="checkbox" class="todo__list-check" name="" id=""> 
-        <span class="todo__list-text">${inputString.value}</span>
-        <span class="todo__list-time">${timeUpdate()}</span>
-        <a class="todo__list-delete">X</a>
-        </li>
-        `
+        const newTodo = [{
+            'id' : `${(Date.now().toString())}`,
+            'completed' : false,
+            'todo' : `${inputString.value}`,
+            'time' : `${timeUpdate()}`,
+        }]
+        localTodos = localTodos.concat(newTodo);
+        localStorage.setItem('todos', JSON.stringify(localTodos));
     };
+    updateDisplay();
     inputString.value = '';
-
-    if (todoList.scrollHeight > todoList.clientHeight) {
-        scrollIcon.style.display = 'block';
-    };
-
-    totalTasks.textContent = `${totalItemsUpdate.length + 1}`;
-    storeLocalstorage();
 }
 
 //delete todolist funciton & local strage
 function deleteTodo(todoId) {
-    localTodos = JSON.parse(localStorage.getItem('todos'));
     localTodos = localTodos.filter(item => item.id !== todoId);
     localStorage.setItem('todos', JSON.stringify(localTodos));
-    let totalItemsUpdate = document.querySelectorAll('.todo__list-item');
-    totalTasks.textContent = `${totalItemsUpdate.length - 1}`;
 }
 
 //update display
@@ -82,7 +76,7 @@ function updateDisplay() {
     localTodos = JSON.parse(localStorage.getItem('todos'));
     localTodos.forEach(todoItem => {
         todoForm.innerHTML += `
-        <li class="todo__list-item" id="${todoItem.id}">
+        <li class="todo__list-item" id="${todoItem.id.length < 13 ? (Date().toString()) : todoItem.id }">
         <input type="checkbox" class="todo__list-check" name="" id="" ${todoItem.completed ? 'checked' : ""}> 
         <span class="todo__list-text">${todoItem.todo}</span>
         <span class="todo__list-time">${todoItem.time ? todoItem.time : timeUpdate()}</span>
@@ -90,25 +84,27 @@ function updateDisplay() {
         </li>
         `
     });
+    totalItemsUpdate();
+    scrollIconDisplay();
 }
 
 //click list event handler
 function listEventHandler(p) {
-    switch (true) {
-        case p.target.className === 'todo__list-delete':
+    const targetClass = p.target.className
+    switch (targetClass) {
+        case 'todo__list-delete':
             deleteTodo(p.target.parentNode.id);
             break;
-        case p.target.className === 'todo__list-check':
+        case 'todo__list-check':
             storeLocalstorage();
             break;
-        case p.target.className === 'todo__list-text':
+        case 'todo__list-text':
             console.log(1);
             break;
         default:
             break;
     }
     updateDisplay();
-    storeLocalstorage();
 }
 
 //time update
@@ -141,18 +137,28 @@ function storeLocalstorage() {
 }
 
 //scroll icon update
-function scrollEvent() {
+function scrollIconDisplay() {
     const { scrollTop, scrollHeight, clientHeight } = document.querySelector('#todo__list');
-    if (clientHeight + scrollTop >= scrollHeight - 5) {
-        document.querySelector('#todo__bottom-icon').style.height = '3px';
-        scrollIcon.style.display = 'none';
-    } else {
-        document.querySelector('#todo__bottom-icon').style.height = '0px';
-        scrollIcon.style.display = 'block';
-    }
-};
+    let scrollIconBottom = document.querySelector('#todo__bottom-icon');
+    scrollIconBottom.style.height = '0px'
+    scrollIcon.style.display = 'none';
+    
+    if (scrollHeight > 460 ) {
 
+        if (clientHeight + scrollTop >= scrollHeight -5) {
+            scrollIconBottom.style.height = '3px';
+            scrollIcon.style.display = 'none';
+        } 
+
+        if (clientHeight + scrollTop < scrollHeight - 5) {
+            scrollIconBottom.style.height = '0px';
+            scrollIcon.style.display = 'block';
+        }
+    } 
+    
+}
+    
 document.addEventListener('DOMContentLoaded', renderTodoList);
 document.querySelector("#todo__add-button").addEventListener("click", newTodo);
-document.querySelector('#todo__list').addEventListener('scroll', scrollEvent);
+document.querySelector('#todo__list').addEventListener('scroll', scrollIconDisplay);
 document.querySelector('#todo__list-form').addEventListener('click', listEventHandler)
