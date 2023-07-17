@@ -50,7 +50,7 @@ async function renderTodoList() {
 function newTodo() {
     const inputString = document.querySelector('#todo__input-text');
     const localTodos = JSON.parse(localStorage.getItem('todos'));
-    if (inputString.value !== '') {
+    if (validateInput(inputString.value)) {
         const newTodo = [{
             'id': `${(Date.now().toString())}`,
             'completed': false,
@@ -108,7 +108,7 @@ function listEventHandler(p) {
             break;
         case 'todo__list-item':
             finishEdit(p.target);
-
+            
             break;
         default:
 
@@ -116,8 +116,8 @@ function listEventHandler(p) {
     }
 }
 
-//
-function listEditor(p) {
+//dbclick
+function dbclickHandler(p) {
     const targetClass = p.target.className;
 
     switch (targetClass) {
@@ -136,28 +136,58 @@ function editList(p) {
     const listItem = p.parentNode.querySelector('.todo__list-input');
     listItem.style.display = 'block';
     listItem.focus();
-    if (p.innerText !== '') {
+    
+    if ( validateInput(p.innerText)) {
         listItem.value = p.innerText;
     }
 }
 
+//finish edit
 function finishEdit(p) {
     const listItem = p.querySelector('.todo__list-input');
-    const listItemText = p.querySelector('.todo__list-text');
     if (listItem.style.display === 'block') {
-        listItemText.textContent = listItem.value;
-        listItem.style.display = 'none';
-        console.log(123);
+        const listItemText = p.querySelector('.todo__list-text');
+        
+        if (validateInput(listItem.value)) {
+            
+            listItemText.textContent = listItem.value;
+            listItem.style.display = 'none';
 
-        const localTodos = JSON.parse(localStorage.getItem('todos'));
-        const editToLocal = localTodos.find(item => item.id === p.id);
-        console.log(editToLocal);
-        if (editToLocal) {
-            editToLocal.todo = listItem.value;
-            localStorage.setItem('todos', JSON.stringify(localTodos));
+            const localTodos = JSON.parse(localStorage.getItem('todos'));
+            const editToLocal = localTodos.find(item => item.id === p.id);
+
+            if (editToLocal) {
+                editToLocal.todo = listItem.value;
+                localStorage.setItem('todos', JSON.stringify(localTodos));
+            }
+        } else {
+            listItem.value = listItemText.textContent;
+            listItem.style.display = 'none';
         }
     }
 }
+
+// enter event
+function enterEventHandler(p) {
+    const targetItem = p.target
+    if (p.key === 'Enter') {
+        const targetClassName = p.target.className;
+        switch (targetClassName) {
+            case 'todo__input-text':
+                newTodo();
+                
+                break;
+            case 'todo__list-input' :
+                finishEdit(targetItem.parentNode);
+
+                break;
+            default:
+
+                break;
+        }
+    }
+}
+
 
 //time update
 function timeUpdate() {
@@ -184,6 +214,7 @@ function checkTodo(p) {
             item.completed = p.checked;
         }
     });
+
     localStorage.setItem('todos', JSON.stringify(localTodos))
 }
 
@@ -204,11 +235,17 @@ function scrollIconDisplay() {
             scrollIcon.style.display = 'block';
         }
     }
+}
 
+// regex input
+function validateInput(inputText) {
+    const regex = /^[a-zA-Z0-9]*([a-zA-Z0-9]+\s*)+[a-zA-Z0-9]*$/;
+    return regex.test(inputText);
 }
 
 document.addEventListener('DOMContentLoaded', renderTodoList);
 document.querySelector("#todo__add-button").addEventListener("click", newTodo);
 document.querySelector('#todo__list').addEventListener('scroll', scrollIconDisplay);
 document.querySelector('#todo__list-form').addEventListener('click', listEventHandler);
-document.querySelector('#todo__list-form').addEventListener('dblclick', listEditor);
+document.querySelector('#todo__list-form').addEventListener('dblclick', dbclickHandler);
+document.querySelector('#todo').addEventListener('keypress', enterEventHandler);
