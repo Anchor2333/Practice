@@ -14,7 +14,6 @@ async function fetchData() {
         }
 
         const data = await response.json();
-
         return data;
     } catch (error) {
         console.error('Fail to fetch todo list:', error);
@@ -28,7 +27,7 @@ async function todoListAPI() {
         const data = await fetchData();
         const dataDeepCopy = JSON.parse(JSON.stringify(data));
         let filterData = dataDeepCopy.todos;
-        filterData.map(item => item.id += Date.now().toString())
+        filterData.map(item => item.id += Date.now().toString());
         apiList = [...filterData, ...localTodos];
         localStorage.setItem('todos', JSON.stringify(apiList));
     }
@@ -149,10 +148,8 @@ function finishEdit(p) {
         const listItemText = p.querySelector('.todo__list-text');
         
         if (validateInput(listItem.value)) {
-            
             listItemText.textContent = listItem.value;
             listItem.style.display = 'none';
-
             const localTodos = JSON.parse(localStorage.getItem('todos'));
             const editToLocal = localTodos.find(item => item.id === p.id);
 
@@ -169,7 +166,7 @@ function finishEdit(p) {
 
 // enter event
 function enterEventHandler(p) {
-    const targetItem = p.target
+    const targetItem = p.target;
     if (p.key === 'Enter') {
         const targetClassName = p.target.className;
         switch (targetClassName) {
@@ -208,22 +205,21 @@ function timeUpdate() {
 //check function
 function checkTodo(p) {
     const localTodos = JSON.parse(localStorage.getItem('todos'));
-    const chekItem = p.parentNode.id
+    const chekItem = p.parentNode.id;
     localTodos.forEach(item => {
         if (`${item.id}` === `${chekItem}`) {
             item.completed = p.checked;
         }
     });
 
-    localStorage.setItem('todos', JSON.stringify(localTodos))
+    localStorage.setItem('todos', JSON.stringify(localTodos));
 }
 
 //scroll icon update
 function scrollIconDisplay() {
     const { scrollTop, scrollHeight, clientHeight } = document.querySelector('#todo__list');
-    scrollIconBottom.style.height = '0px'
+    scrollIconBottom.style.height = '0px';
     scrollIcon.style.display = 'none';
-
     if (scrollHeight > clientHeight) {
 
         //is client scroll to bottom ? display bottom line : display icon 
