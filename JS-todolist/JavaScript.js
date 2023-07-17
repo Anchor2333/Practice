@@ -136,7 +136,7 @@ function editList(p) {
     const listItemAll = document.querySelectorAll('.todo__list-input');
     listItemAll.forEach(item => {
         if ( item.id !== p.parentNode.id ) {
-            item.style.display = 'none'
+            item.style.display = 'none';
         }
     })
     listItem.style.display = 'block';
