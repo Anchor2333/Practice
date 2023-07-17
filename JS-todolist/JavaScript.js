@@ -28,10 +28,10 @@ async function todoListAPI() {
         const data = await fetchData();
         const dataDeepCopy = JSON.parse(JSON.stringify(data));
         let filterData = dataDeepCopy.todos;
-        filterData.map(item => item.id += Date.now().toString()) 
+        filterData.map(item => item.id += Date.now().toString())
         apiList = [...filterData, ...localTodos];
         localStorage.setItem('todos', JSON.stringify(apiList));
-    } 
+    }
 }
 
 //total tasks
@@ -87,7 +87,7 @@ function updateDisplay() {
         </li>
         `
     });
-    
+
     totalItemsUpdate();
     scrollIconDisplay();
 }
@@ -106,10 +106,14 @@ function listEventHandler(p) {
             checkTodo(p.target);
 
             break;
+        case 'todo__list-item':
+            finishEdit(p.target);
+
+            break;
         default:
 
             break;
-        }
+    }
 }
 
 //
@@ -118,15 +122,40 @@ function listEditor(p) {
 
     switch (targetClass) {
         case 'todo__list-text':
-            console.log(targetClass);
-            console.log(p.target.innerText);
-            console.log(p.target.parentNode.querySelector('.todo__list-input'));
-            p.target.parentNode.querySelector('.todo__list-input').style.display = 'block';
-            
+            editList(p.target);
+
             break;
         default:
 
             break;
+    }
+}
+
+//edit list
+function editList(p) {
+    const listItem = p.parentNode.querySelector('.todo__list-input');
+    listItem.style.display = 'block';
+    listItem.focus();
+    if (p.innerText !== '') {
+        listItem.value = p.innerText;
+    }
+}
+
+function finishEdit(p) {
+    const listItem = p.querySelector('.todo__list-input');
+    const listItemText = p.querySelector('.todo__list-text');
+    if (listItem.style.display === 'block') {
+        listItemText.textContent = listItem.value;
+        listItem.style.display = 'none';
+        console.log(123);
+
+        const localTodos = JSON.parse(localStorage.getItem('todos'));
+        const editToLocal = localTodos.find(item => item.id === p.id);
+        console.log(editToLocal);
+        if (editToLocal) {
+            editToLocal.todo = listItem.value;
+            localStorage.setItem('todos', JSON.stringify(localTodos));
+        }
     }
 }
 
@@ -151,13 +180,12 @@ function checkTodo(p) {
     const localTodos = JSON.parse(localStorage.getItem('todos'));
     const chekItem = p.parentNode.id
     localTodos.forEach(item => {
-        if( `${item.id}` === `${chekItem}` ){
-            item.completed = p.checked ;
+        if (`${item.id}` === `${chekItem}`) {
+            item.completed = p.checked;
         }
     });
     localStorage.setItem('todos', JSON.stringify(localTodos))
 }
-
 
 //scroll icon update
 function scrollIconDisplay() {
