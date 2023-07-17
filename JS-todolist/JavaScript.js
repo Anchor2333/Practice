@@ -107,7 +107,7 @@ function listEventHandler(p) {
             break;
         case 'todo__list-item':
             finishEdit(p.target);
-            
+
             break;
         default:
 
@@ -133,10 +133,16 @@ function dbclickHandler(p) {
 //edit list
 function editList(p) {
     const listItem = p.parentNode.querySelector('.todo__list-input');
+    const listItemAll = document.querySelectorAll('.todo__list-input');
+    listItemAll.forEach(item => {
+        if ( item.id !== p.parentNode.id ) {
+            item.style.display = 'none'
+        }
+    })
     listItem.style.display = 'block';
     listItem.focus();
-    
-    if ( validateInput(p.innerText)) {
+
+    if (validateInput(p.innerText)) {
         listItem.value = p.innerText;
     }
 }
@@ -146,7 +152,7 @@ function finishEdit(p) {
     const listItem = p.querySelector('.todo__list-input');
     if (listItem.style.display === 'block') {
         const listItemText = p.querySelector('.todo__list-text');
-        
+
         if (validateInput(listItem.value)) {
             listItemText.textContent = listItem.value;
             listItem.style.display = 'none';
@@ -172,9 +178,9 @@ function enterEventHandler(p) {
         switch (targetClassName) {
             case 'todo__input-text':
                 newTodo();
-                
+
                 break;
-            case 'todo__list-input' :
+            case 'todo__list-input':
                 finishEdit(targetItem.parentNode);
 
                 break;
@@ -250,7 +256,7 @@ function clearAll() {
 
 // regex input
 function validateInput(inputText) {
-    const regex =  /^[\u4e00-\u9fa5a-zA-Z0-9]*([a-zA-Z0-9\u4e00-\u9fa5]+[\s']*)+[a-zA-Z0-9\u4e00-\u9fa5]*$/;
+    const regex = /^[\u4e00-\u9fa5a-zA-Z0-9]*([a-zA-Z0-9\u4e00-\u9fa5]+[\s']*)+[a-zA-Z0-9\u4e00-\u9fa5]*$/;
     return regex.test(inputText);
 }
 
