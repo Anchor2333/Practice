@@ -232,9 +232,25 @@ function scrollIconDisplay() {
     }
 }
 
+//scroll to bottom
+function scrollToBottom() {
+    const scrollIcon = document.querySelector('#todo__list');
+    scrollIcon.scrollTo({
+        top: scrollIcon.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+//clear all todo
+function clearAll() {
+    const localtodo = [];
+    localStorage.setItem('todos', JSON.stringify(localtodo));
+    updateDisplay();
+}
+
 // regex input
 function validateInput(inputText) {
-    const regex = /^[a-zA-Z0-9\'\" ]*([a-zA-Z0-9]+\s*)+[a-zA-Z0-9']*$/;
+    const regex =  /^[\u4e00-\u9fa5a-zA-Z0-9]*([a-zA-Z0-9\u4e00-\u9fa5]+[\s']*)+[a-zA-Z0-9\u4e00-\u9fa5]*$/;
     return regex.test(inputText);
 }
 
@@ -244,3 +260,5 @@ document.querySelector('#todo__list').addEventListener('scroll', scrollIconDispl
 document.querySelector('#todo__list-form').addEventListener('click', listEventHandler);
 document.querySelector('#todo__list-form').addEventListener('dblclick', dbclickHandler);
 document.querySelector('#todo').addEventListener('keypress', enterEventHandler);
+document.querySelector('#todo__scroll-icon').addEventListener('click', scrollToBottom);
+document.querySelector('#todo__button').addEventListener('click', clearAll);

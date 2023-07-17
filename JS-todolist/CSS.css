@@ -221,6 +221,7 @@ ul {
     display: none;
     right: -150px;
     top: -10px;
+    cursor: pointer;
 }
 .todo__footer {
     display: flex;
@@ -258,7 +259,6 @@ ul {
     color: #928CDD;
     text-align: center;
     font-size: 15px;
-
 }
 
 .todo__button-icon {
