@@ -185,7 +185,6 @@ function enterEventHandler(p) {
     }
 }
 
-
 //time update
 function timeUpdate() {
     let hours = new Date().getHours();
