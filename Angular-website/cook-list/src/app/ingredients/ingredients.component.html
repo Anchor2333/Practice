@@ -1,0 +1,9 @@
+<h2>Cook Ingredients</h2>
+<ul class="heros">
+    <li *ngFor="let ingredients of ingredients">
+        <button type="button" (click)="onSelect(ingredients)">
+            <span class="badge">{{ingredients.id}}</span>
+            <span class="name">{{ingredients.name}}</span>
+        </button>
+    </li>
+</ul>
