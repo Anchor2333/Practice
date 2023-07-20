@@ -1,9 +1,10 @@
-<h2>Cook Ingredients</h2>
-<ul class="heros">
-    <li *ngFor="let ingredients of ingredients">
-        <button type="button" (click)="onSelect(ingredients)">
-            <span class="badge">{{ingredients.id}}</span>
-            <span class="name">{{ingredients.name}}</span>
-        </button>
-    </li>
+<h2>Ingredient of Cook List</h2>
+<ul class="heroes">
+  <li *ngFor="let ingredient of ingredients">
+    <button [class.selected]="ingredient === selectedIngredient" type="button" (click)="onSelect(ingredient)">
+      <span class="badge">{{ ingredient.id }}</span>
+      <span class="name">{{ ingredient.name }}</span>
+    </button>
+  </li>
 </ul>
+<app-ingredient-detail [ingredient]="selectedIngredient"></app-ingredient-detail>

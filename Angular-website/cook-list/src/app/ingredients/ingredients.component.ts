@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Ingredient } from '../igredient';
 import { INGREDIENTS } from '../mock-ingredients';
 
 @Component({
@@ -7,9 +8,9 @@ import { INGREDIENTS } from '../mock-ingredients';
   styleUrls: ['./ingredients.component.css']
 })
 export class IngredientsComponent {
-  selectedIngredients? : IngredientsComponent;
-  onSelect(ingredients : IngredientsComponent) : void {
-    this.selectedIngredients = ingredients;
+   ingredients = INGREDIENTS;
+   selectedIngredient ? : Ingredient;
+  onSelect(ingredient: Ingredient) : void {
+    this.selectedIngredient = ingredient;
   }
-  ingredients = INGREDIENTS;
 }
