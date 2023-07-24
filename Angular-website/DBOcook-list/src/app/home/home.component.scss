@@ -1,0 +1,31 @@
+.home {
+  display: flex;
+  position: relative;
+  width: 1870px;
+  height: 870px;
+  flex-shrink: 0;
+  border-radius: 40px;
+  background: url('../../assets/images/Frame1.png') no-repeat center;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+
+  .home-title {
+    position: absolute;
+    bottom: 25px;
+    left: 30px;
+    flex-shrink: 0;
+
+    h1 {
+      color: #FFF;
+      justify-content: center;
+      font-family: Roboto;
+      font-size: 200px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -10px;
+      cursor: default;
+      text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      user-select: none;
+    }
+  }
+}
