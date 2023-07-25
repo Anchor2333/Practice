@@ -1,12 +1,22 @@
 <header class="navbar">
-  <div class="navbar-dashbord"></div>
-  <div class="navbar-title__main">
-    <h2>MAINPAGE</h2>
+  <div class="navbar-dashbord">
+    <a href="" class="navbar-dashbord__btn">
+      <i class="navbar-dashbord__btn-icon"></i>
+      <i class="navbar-dashbord__btn-icon"></i>
+    </a>
   </div>
-  <div class="navbar-title__cook-list">
-    <h2>COOKLIST</h2>
-  </div>
-  <div class="navbar-title__calculator">
-    <h2>CALCULATOR</h2>
-  </div>
+    <div class="navbar-title">
+      <!-- <a [ngClass]="{ 'navbar-title__mainpage-active' : active , 'navbar-title__btn' : !active }">
+        <h2 class="navbar-title__btn-text">MAINPAGE</h2>
+      </a>
+      <a [ngClass]="{ 'navbar-title__cooklist-active' : active , 'navbar-title__btn' : !active }">
+        <h2 class="navbar-title__btn-text">COOKLIST</h2>
+      </a>
+      <a [ngClass]="{ 'navbar-title__calulator-active' : active , 'navbar-title__btn' : !active }">
+        <h2 class="navbar-title__btn-text">CALCULATOR</h2>
+      </a> -->
+      <a class="navbar-title__btn" routerLinkActive="navbar-title__mainpage-active" [routerLink]="'/'">
+        <h2 class="navbar-title__btn-text">MAINPAGE</h2>
+      </a>
+    </div>
 </header>

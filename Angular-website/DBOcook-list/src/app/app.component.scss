@@ -1,4 +1,21 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 .cookList {
   display: flex;
   justify-content: center;
+  position: relative;
+
+  .navbar {
+    position: absolute;
+    width: 1890px;
+    top: 3%;
+    left: center;
+    z-index: 1;
+  }
 }
+
+
